@@ -1,0 +1,7 @@
+According to Centers for Disease Control and Prevention (CDC), the Behavioral Risk Factor Surveillance System (BRFSS) collects state data about U.S. residents regarding their health-related risk behaviors, chronic health conditions, and use of preventive services by completing over 400,000 interviews each year. The most recent survey available to the public is from 2017. While there is no specific goal or task for this dataset, participants are encouraged to choose a route that would assist a health professional. One example would be predicting risks for certain diseases or conditions. Another example would be trying to find either the most likely results of survey responses for a person or the "worst case" scenario responses for a person given only partial health information about them. A useful visualization tool may also make for an interesting project. These are just a few ideas, but the possibilities are endless! 
+
+The file demoBRFSS.ipynb in the CDC directory contains an example on how to read in the dataset, but the key ideas can be found here: 
+
+The data is encoded with one record per line, which each line having exactly the same number of characters. Each variable has a fixed starting column and fixed length, so the same variable will be found in the exact same columns across each row.
+The starting position and length of each variable can be found here: https://www.cdc.gov/brfss/annual_data/2017/llcp_varlayout_17_onecolumn.html
+The definition of each variable is here: https://www.cdc.gov/brfss/annual_data/2017/pdf/codebook17_llcp-v2-508.pdf
