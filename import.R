@@ -14,3 +14,5 @@ nrow(BRFSS)
 # Shortened version of dataset for non-laggy e.g. viewing
 BRFSS.head <- head(BRFSS, n = 20L)
 View(BRFSS.head)
+
+data <- BRFSS
