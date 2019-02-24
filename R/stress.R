@@ -10,7 +10,7 @@ plot.stress <- function(BRFSS) {
                           `5`="All"
   )
   ggplot(data.frame(stress)) +
-    geom_bar(aes(x = stress)) +
+    geom_bar(aes(x = stress), fill = "#dd4b39") +
     labs(x = "'... of the time' Occurrence of Stress in the last month (subjective)", y = "Number of People / Responses")
 }
 
