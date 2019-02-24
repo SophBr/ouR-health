@@ -57,16 +57,14 @@ dashboardPage(
         status="danger"),
       
       # Smoking
-      box(
-        plotOutput("smoking.personal", height = 250),
-        width = 6,
-        title= "Smoking (you)",
-        status="danger"),
-      box(
-        plotOutput("smoking.overall", height = 250),
-        width = 6,
+      tabBox(
         title = "Smoking",
-        status="danger"),
+        # The id lets us use input$tabset1 on the server to find the current tab
+        id = "tabset1",
+        width = 12,
+        tabPanel("People like you", plotOutput("smoking.personal", height = 250), icon = icon("user")),
+        tabPanel("Overall", plotOutput("smoking.overall", height = 250), icon = icon("users"))
+      ),
       
       # Food
       box(

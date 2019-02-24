@@ -37,7 +37,7 @@ shinyServer(function(input, output) {
     valueBox(
       formatNumber(nrow(personal())),
       "Number of People like you",
-      icon = icon("users")
+      icon = icon("user")
     )
   })
   output$sleepPlot.personal <- renderPlot({ plot.sleep(personal()) })

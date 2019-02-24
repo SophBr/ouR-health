@@ -27,8 +27,7 @@ plot.smoke <- function(BRFSS) {
     theme_bw() +
     theme(axis.title.x=element_blank(), axis.text.x=element_blank(),
           axis.ticks.x=element_blank(), axis.title.y=element_blank(), axis.text.y=element_blank(),
-          axis.ticks.y=element_blank(), panel.border = element_blank(), panel.grid.major = ,
-          panel.grid.minor = ) +
+          axis.ticks.y=element_blank(), panel.border = element_blank(), legend.position="bottom") +
     coord_flip()
 }
 
