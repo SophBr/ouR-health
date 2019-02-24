@@ -14,8 +14,3 @@ nrow(BRFSS)
 # Shortened version of dataset for non-laggy e.g. viewing
 BRFSS.head <- head(BRFSS, n = 20L)
 View(BRFSS.head)
-
-
-# Fun stuff
-proper.sleep <- BRFSS %>% filter(SLEPTIM1 <= 24)
-hist(proper.sleep$SLEPTIM1)
