@@ -1,3 +1,6 @@
+install.packages("RColorBrewer")
+library(RColorBrewer)
+
 plot.stress <- function(BRFSS) {
   filtered <- BRFSS %>% filter(SDHSTRES <= 5)
   stress <- recode_factor(filtered$SDHSTRES,
@@ -31,4 +34,11 @@ plot.smoke <- function(BRFSS) {
     coord_flip()
 }
 
+plot.exer <- function(BRFSS) {
+  exer <- BRFSS %>% filter(PA1MIN_ <= 3000)
+  
+  ggplot(data.frame(exer)) +
+    geom_histogram(aes(x = PA1MIN_), bins = 20) +
+    labs(x = "Minutes of Exercise per week", y = "Number of People / Responses")
+}
 
