@@ -1,5 +1,5 @@
 plot.eat <- function(column, unitLabel) {
-  
+  data <- data.frame(column = column)
   NewFrut<-filter(data,column<1000)
   veg1<-NewFrut$column*.01
   ggplot(data.frame(veg1)) +
