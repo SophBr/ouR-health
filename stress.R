@@ -1,4 +1,3 @@
-install.packages("RColorBrewer")
 library(RColorBrewer)
 
 plot.stress <- function(BRFSS) {
