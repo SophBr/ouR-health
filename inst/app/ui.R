@@ -18,26 +18,35 @@ dashboardPage(
             width = 12, # full width
             fluidRow(
               column(selectInput("state", "State:", append(c("All" = -1), stateList)), width = 12),
-              column(sliderInput("age", label = "Age:", value = NA, min = 18, max = 120), width = 6),
+              column(sliderInput("age", label = "Age:", value = 25, min = 18, max = 85), width = 6),
               column(selectInput("sex", "Sex:", c("male" = 1, "female" = 2)), width = 6)
             )
           ),
           
-          # Personal
+          valueBoxOutput("nValueBox.personal", width = 6),
+          valueBoxOutput("nValueBox.overall", width = 6),
+          
+          # Sleep
           box(
-            valueBoxOutput("nValueBox.personal", width = 12),
             plotOutput("sleepPlot.personal", height = 250),
+            width = 6,
+            title= "Sleep (you)"),
+          box(
+            plotOutput("sleepPlot.overall", height = 250),
+            width = 6,
+            title = "Sleep"),
+          
+          # General Health
+          box(
             plotOutput("generalHealth.personal", height = 250),
             width = 6,
-            title= "You in the Data"),
-          
-          # Overall
+            title= "General Health (you)",
+            status="success"),
           box(
-            valueBoxOutput("nValueBox.overall", width = 12),
-            plotOutput("sleepPlot.overall", height = 250),
             plotOutput("generalHealth.overall", height = 250),
             width = 6,
-            title = "Overall")
+            title = "General Health",
+            status="success")
         )
       ),
       

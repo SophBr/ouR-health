@@ -39,7 +39,7 @@ shinyServer(function(input, output) {
   output$nValueBox.overall <- renderValueBox({
     valueBox(
       nrow(overall()),
-      "Number of People",
+      "Number of People (total)",
       icon = icon("users")
     )
   })
