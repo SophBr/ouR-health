@@ -17,18 +17,14 @@ dashboardPage(
           box(
             width = 12, # full width
             fluidRow(
-              column(selectInput("state", "State:", append(c("All" = NA), stateList)), width = 12),
+              column(selectInput("state", "State:", append(c("All" = -1), stateList)), width = 12),
               column(sliderInput("age", label = "Age:", value = NA, min = 18, max = 120), width = 6),
               column(selectInput("sex", "Sex:", c("male" = 1, "female" = 2)), width = 6)
             )
           ),
           
-          box(plotOutput("plot1", height = 250)),
-          
-          box(
-            title = "Controls",
-            sliderInput("slider", "Number of observations:", 1, 100, 50)
-          )
+          box(plotOutput("sleepPlot.personal", height = 250), width = 6),
+          box(plotOutput("sleepPlot.overall", height = 250), width = 6)
         )
       ),
       
