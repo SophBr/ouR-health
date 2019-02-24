@@ -13,21 +13,6 @@ plot.stress <- function(BRFSS) {
 }
 
 
-
-plot.smoke <- function(BRFSS) {
-  filtered <- BRFSS %>% filter(X_SMOKER3 <= 4)
-  smoke <- recode_factor(filtered$X_SMOKER3,
-                          `1`="Current smoker (every day)",
-                          `2`="Current smoker (some days)",
-                          `3`="Former smoker",
-                          `4`="never smoked"
-  )
-  ggplot(data.frame(smoke)) +
-    geom_bar(aes(x = smoke)) +
-    labs(x = "Smoker status", y = "Number of People / Responses")
-}
-
-
 plot.smoke <- function(BRFSS) {
   filtered <- BRFSS %>% filter(X_SMOKER3 <= 4)
   smoke <- recode_factor(filtered$X_SMOKER3,
