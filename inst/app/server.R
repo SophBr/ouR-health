@@ -2,11 +2,11 @@ library(shiny)
 library(tidyverse)
 
 source("../../load_data.R", chdir = T)
-source("../../data_manipulation.R")
-source("../../eat.R")
-source("../../stress.R")
-source("../../descriptives.R")
-source("../../highlight.R")
+source("../../R/data_manipulation.R")
+source("../../R/eat.R")
+source("../../R/stress.R")
+source("../../R/descriptives.R")
+source("../../R/highlight.R")
 
 # Define server logic required to generate and plot a random distribution
 shinyServer(function(input, output) {

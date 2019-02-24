@@ -1,6 +1,6 @@
 library(shinydashboard)
-source("../../stateList.R")
-source("../../info.R")
+source("../../R/stateList.R")
+source("../../R/info.R")
 
 dashboardPage(
   skin = "green",
