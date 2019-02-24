@@ -1,9 +1,10 @@
 library(shinydashboard)
 source("../../stateList.R")
+source("../../info.R")
 
 dashboardPage(
   skin = "green",
-  dashboardHeader(title = "ouRhealth", titleWidth = 300),
+  dashboardHeader(title = "YouRhealth", titleWidth = 300),
   dashboardSidebar(
     width = 300,
     sidebarMenu(
@@ -45,50 +46,49 @@ dashboardPage(
         status="success"),
       
       # Stress
-      box(
-        plotOutput("stress.personal", height = 250),
-        width = 6,
-        title= "Stress (you)",
-        status="danger"),
-      box(
-        plotOutput("stress.overall", height = 250),
-        width = 6,
+      tabBox(
         title = "Stress",
-        status="danger"),
+        width = 12,
+        tabPanel("Graphs", fluidRow(
+          column(plotOutput("stress.personal", height = 250), width = 6),
+          column(plotOutput("stress.overall", height = 250), width = 6)
+        ), icon = icon("bar-chart")),
+        tabPanel("Information", HTML(stressInfo), icon = icon("file-text"))
+      ),
       
       # Smoking
       tabBox(
         title = "Smoking",
-        # The id lets us use input$tabset1 on the server to find the current tab
-        id = "tabset1",
         width = 12,
         tabPanel("People like you", plotOutput("smoking.personal", height = 250), icon = icon("user")),
         tabPanel("Overall", plotOutput("smoking.overall", height = 250), icon = icon("users"))
       ),
       
-      # Food
-      box(
-        plotOutput("fruit.personal", height = 250),
-        plotOutput("veg.personal", height = 250),
-        width = 6,
-        title= "Nutrition (you)",
-        status="success"),
-      box(
-        plotOutput("fruit.overall", height = 250),
-        plotOutput("veg.overall", height = 250),
-        width = 6,
-        title = "Fruit & Vegetables",
-        status="success"),
+      # Food / Nutrition
+      tabBox(
+        title = "Nutrition",
+        width = 12,
+        tabPanel("Fruit", fluidRow(
+          column(plotOutput("fruit.personal", height = 250), width = 6),
+          column(plotOutput("fruit.overall", height = 250), width = 6)
+        ), icon = icon("bar-chart")),
+        tabPanel("Vegetables", fluidRow(
+          column(plotOutput("veg.personal", height = 250), width = 6),
+          column(plotOutput("veg.overall", height = 250), width = 6)
+        ), icon = icon("bar-chart")),
+        tabPanel("Information", HTML(nutritionInfo), icon = icon("file-text"))
+      ),
       
       # Sleep
-      box(
-        plotOutput("sleepPlot.personal", height = 250),
-        width = 6,
-        title= "Sleep (you)"),
-      box(
-        plotOutput("sleepPlot.overall", height = 250),
-        width = 6,
-        title = "Sleep")
+      tabBox(
+        title = "Sleep",
+        width = 12,
+        tabPanel("Graphs", fluidRow(
+          column(plotOutput("sleepPlot.personal", height = 250), width = 6),
+          column(plotOutput("sleepPlot.overall", height = 250), width = 6)
+        ), icon = icon("bar-chart")),
+        tabPanel("Information", HTML(sleepInfo), icon = icon("file-text"))
+      )
     )
   )
 )

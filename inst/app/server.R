@@ -40,7 +40,9 @@ shinyServer(function(input, output) {
       icon = icon("user")
     )
   })
-  output$sleepPlot.personal <- renderPlot({ plot.sleep(personal()) })
+  output$sleepPlot.personal <- renderPlot({
+    default.highlight(plot.sleep(personal()), input$highlight, input$sleep)
+  })
   output$generalHealth.personal <- renderPlot({
     plot <- plot.generalHealth(personal())
     if (input$highlight && !is.na(input$health)) {
