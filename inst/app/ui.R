@@ -19,7 +19,6 @@ dashboardPage(
         p("By answering these questions we can highlight your position in the dataset."),
         column(checkboxInput("highlight", "Do you want to highlight yourself in the data?"), width = 12),
         conditionalPanel("input.highlight == 1",
-                         column(selectInput("smoke", "How often do you smoke?", c("Every day" = 1, "Some days" = 2, "Former smoker" = 3, "< 100 cigarettes throughout my lifetime" = 4, "never" = 4)), width = 12),
                          column(selectInput("health", "Would you say that in general your health is:", c("Excellent" = 1, "Very good" = 2, "Good" = 3, "Fair" = 4, "Poor" = 5)), width = 12),
                          column(sliderInput("sleep", "On average, how many hours of sleep do you get in a 24-hour period?", value = 0, min = 0, max = 24), width = 12)
                          ),

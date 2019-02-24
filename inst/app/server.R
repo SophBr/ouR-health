@@ -2,9 +2,11 @@ library(shiny)
 library(tidyverse)
 
 source("../../load_data.R", chdir = T)
+source("../../data_manipulation.R")
 source("../../eat.R")
 source("../../stress.R")
 source("../../descriptives.R")
+source("../../highlight.R")
 
 # Define server logic required to generate and plot a random distribution
 shinyServer(function(input, output) {
@@ -39,7 +41,13 @@ shinyServer(function(input, output) {
     )
   })
   output$sleepPlot.personal <- renderPlot({ plot.sleep(personal()) })
-  output$generalHealth.personal <- renderPlot({ plot.generalHealth(personal()) })
+  output$generalHealth.personal <- renderPlot({
+    plot <- plot.generalHealth(personal())
+    if (input$highlight && !is.na(input$health)) {
+      plot <- plot + geom_vline(xintercept = as.numeric(input$health), colour = highlight.color)
+    }
+    plot
+  })
   output$fruit.personal <- renderPlot({ plot.eat(personal()$X_FRUTSU1, "Fruit Units") })
   output$veg.personal <- renderPlot({ plot.eat(personal()$X_VEGESU1, "Vegetable Units") })
   output$stress.personal <- renderPlot({ plot.stress(personal()) })
@@ -54,8 +62,12 @@ shinyServer(function(input, output) {
       icon = icon("users")
     )
   })
-  output$sleepPlot.overall <- renderPlot({ plot.sleep(overall()) })
-  output$generalHealth.overall <- renderPlot({ plot.generalHealth(overall()) })
+  output$sleepPlot.overall <- renderPlot({
+    default.highlight(plot.sleep(overall()), input$highlight, input$sleep)
+  })
+  output$generalHealth.overall <- renderPlot({
+    default.highlight(plot.generalHealth(overall()), input$highlight, input$health)
+  })
   output$fruit.overall <- renderPlot({ plot.eat(overall()$X_FRUTSU1, "Fruit Units") })
   output$veg.overall <- renderPlot({ plot.eat(overall()$X_VEGESU1, "Vegetable Units") })
   output$stress.overall <- renderPlot({ plot.stress(overall()) })

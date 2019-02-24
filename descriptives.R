@@ -12,13 +12,7 @@ plot.sleep <- function(data) {
 
 plot.generalHealth <- function(data) {
   filtered <- data %>% filter(GENHLTH <= 5)
-  health <- recode_factor(filtered$GENHLTH,
-                          `1`="Excellent",
-                          `2`="Very good",
-                          `3`="Good",
-                          `4`="Fair",
-                          `5`="Poor"
-                          )
+  health <- genHealth.recode(filtered$GENHLTH)
   ggplot(data.frame(health)) +
     geom_bar(aes(x = health)) +
     labs(x = "General Health (subjective)", y = "Number of People / Responses")
