@@ -8,7 +8,7 @@ dashboardPage(
     sidebarMenu(
       column(selectInput("state", "State:", append(c("All" = -1), stateList)), width = 12),
       column(sliderInput("age", label = "Age:", value = 25, min = 18, max = 85), width = 12),
-      column(selectInput("sex", "Sex:", c("male" = 1, "female" = 2)), width = 12)
+      column(selectInput("sex", "Sex:", c("All" = -1, "male" = 1, "female" = 2)), width = 12)
     )
   ),
   dashboardBody(

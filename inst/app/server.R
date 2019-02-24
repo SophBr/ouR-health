@@ -12,7 +12,7 @@ shinyServer(function(input, output) {
     user.state = input$state
     
     filtered <- BRFSS
-    if (!is.na(user.sex)) {
+    if (user.sex >= 0) {
       filtered <- filtered %>% filter(SEX == user.sex)
     }
     if (!is.na(user.age)) {
