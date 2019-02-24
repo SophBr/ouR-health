@@ -48,8 +48,12 @@ shinyServer(function(input, output) {
     }
     plot
   })
-  output$fruit.personal <- renderPlot({ plot.eat(personal()$X_FRUTSU1, "Fruit Units") })
-  output$veg.personal <- renderPlot({ plot.eat(personal()$X_VEGESU1, "Vegetable Units") })
+  output$fruit.personal <- renderPlot({
+    default.highlight(plot.eat(personal()$X_FRUTSU1, "Fruit Units"), input$highlight, input$fruit)
+  })
+  output$veg.personal <- renderPlot({
+    default.highlight(plot.eat(personal()$X_VEGESU1, "Vegetable Units"), input$highlight, input$veg)
+  })
   output$stress.personal <- renderPlot({ plot.stress(personal()) })
   output$smoking.personal <- renderPlot({ plot.smoke(personal()) })
   
@@ -68,8 +72,12 @@ shinyServer(function(input, output) {
   output$generalHealth.overall <- renderPlot({
     default.highlight(plot.generalHealth(overall()), input$highlight, input$health)
   })
-  output$fruit.overall <- renderPlot({ plot.eat(overall()$X_FRUTSU1, "Fruit Units") })
-  output$veg.overall <- renderPlot({ plot.eat(overall()$X_VEGESU1, "Vegetable Units") })
+  output$fruit.overall <- renderPlot({
+    default.highlight(plot.eat(overall()$X_FRUTSU1, "Fruit Units"), input$highlight, input$fruit)
+  })
+  output$veg.overall <- renderPlot({
+    default.highlight(plot.eat(overall()$X_VEGESU1, "Vegetable Units"), input$highlight, input$veg)
+  })
   output$stress.overall <- renderPlot({ plot.stress(overall()) })
   output$smoking.overall <- renderPlot({ plot.smoke(overall()) })
 })  

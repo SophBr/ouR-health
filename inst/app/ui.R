@@ -20,7 +20,9 @@ dashboardPage(
         column(checkboxInput("highlight", "Do you want to highlight yourself in the data?"), width = 12),
         conditionalPanel("input.highlight == 1",
                          column(selectInput("health", "Would you say that in general your health is:", c("Excellent" = 1, "Very good" = 2, "Good" = 3, "Fair" = 4, "Poor" = 5)), width = 12),
-                         column(sliderInput("sleep", "On average, how many hours of sleep do you get in a 24-hour period?", value = 0, min = 0, max = 24), width = 12)
+                         column(sliderInput("sleep", "On average, how many hours of sleep do you get in a 24-hour period?", value = 0, min = 0, max = 24), width = 12),
+                         column(numericInput("fruit", "How many items of fruit do you eat per day?", value = 0, min = 0, max = 10), width = 12),
+                         column(numericInput("veg", "How many vegetables do you eat per day?", value = 0, min = 0, max = 10), width = 12)
                          ),
         
         width = 12,
