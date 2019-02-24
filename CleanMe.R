@@ -57,7 +57,9 @@ BRFSS_a$FIREARM4[BRFSS_a$FIREARM4 == "7"] <- NA
 BRFSS_a$SLEPTIM1[BRFSS_a$SLEPTIM1 == "77"] <- NA
 BRFSS_a$SLEPTIM1[BRFSS_a$SLEPTIM1 == "99"] <- NA
 
-BRFSS_a$SEX[BRFSS_a$SEX == "9"] <- NA
+BRFSS_a$SEX[BRFSS_a$SEX == "1"] <- "Male"
+BRFSS_a$SEX[BRFSS_a$SEX == "2"] <- "Female"
+
 
 
 BRFSS_a
