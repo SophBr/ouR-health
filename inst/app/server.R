@@ -3,10 +3,12 @@ library(tidyverse)
 
 source("../../load_data.R", chdir = T)
 source("../../eat.R")
+source("../../stress.R")
 source("../../descriptives.R")
 
 # Define server logic required to generate and plot a random distribution
 shinyServer(function(input, output) {
+  # ==== Data Filtering ===
   personal <- reactive({
     user.sex = input$sex # 1 = male; 2 = female
     user.age = max(min(floor((input$age - 15) / 5), 13), 1) # calculate age group
@@ -27,6 +29,8 @@ shinyServer(function(input, output) {
   })
   overall <- reactive({ BRFSS })
 
+  # ==== Output ====
+  # --- Output: personal ---
   output$nValueBox.personal <- renderValueBox({
     valueBox(
       formatNumber(nrow(personal())),
@@ -38,7 +42,10 @@ shinyServer(function(input, output) {
   output$generalHealth.personal <- renderPlot({ plot.generalHealth(personal()) })
   output$fruit.personal <- renderPlot({ plot.eat(personal()$X_FRUTSU1, "Fruit Units") })
   output$veg.personal <- renderPlot({ plot.eat(personal()$X_VEGESU1, "Vegetable Units") })
+  output$stress.personal <- renderPlot({ plot.stress(personal()) })
+  output$smoking.personal <- renderPlot({ plot.smoke(personal()) })
   
+  # --- Output: overall ---
   output$nValueBox.overall <- renderValueBox({
     valueBox(
       formatNumber(nrow(overall())),
@@ -51,4 +58,6 @@ shinyServer(function(input, output) {
   output$generalHealth.overall <- renderPlot({ plot.generalHealth(overall()) })
   output$fruit.overall <- renderPlot({ plot.eat(overall()$X_FRUTSU1, "Fruit Units") })
   output$veg.overall <- renderPlot({ plot.eat(overall()$X_VEGESU1, "Vegetable Units") })
+  output$stress.overall <- renderPlot({ plot.stress(overall()) })
+  output$smoking.overall <- renderPlot({ plot.smoke(overall()) })
 })  
