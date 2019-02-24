@@ -37,6 +37,20 @@ dashboardPage(
         plotOutput("generalHealth.overall", height = 250),
         width = 6,
         title = "General Health",
+        status="success"),
+      
+      # Food
+      box(
+        plotOutput("fruit.personal", height = 250),
+        plotOutput("veg.personal", height = 250),
+        width = 6,
+        title= "Nutrition (you)",
+        status="success"),
+      box(
+        plotOutput("fruit.overall", height = 250),
+        plotOutput("veg.overall", height = 250),
+        width = 6,
+        title = "Fruit & Vegetables",
         status="success")
     )
   )

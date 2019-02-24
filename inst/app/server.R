@@ -2,6 +2,7 @@ library(shiny)
 library(tidyverse)
 
 source("../../load_data.R", chdir = T)
+source("../../eat.R")
 source("../../descriptives.R")
 
 # Define server logic required to generate and plot a random distribution
@@ -35,6 +36,8 @@ shinyServer(function(input, output) {
   })
   output$sleepPlot.personal <- renderPlot({ plot.sleep(personal()) })
   output$generalHealth.personal <- renderPlot({ plot.generalHealth(personal()) })
+  output$fruit.personal <- renderPlot({ plot.eat(personal()$X_FRUTSU1, "Fruit Units") })
+  output$veg.personal <- renderPlot({ plot.eat(personal()$X_VEGESU1, "Vegetable Units") })
   
   output$nValueBox.overall <- renderValueBox({
     valueBox(
@@ -45,4 +48,6 @@ shinyServer(function(input, output) {
   })
   output$sleepPlot.overall <- renderPlot({ plot.sleep(overall()) })
   output$generalHealth.overall <- renderPlot({ plot.generalHealth(overall()) })
+  output$fruit.overall <- renderPlot({ plot.eat(overall()$X_FRUTSU1, "Fruit Units") })
+  output$veg.overall <- renderPlot({ plot.eat(overall()$X_VEGESU1, "Vegetable Units") })
 })  
