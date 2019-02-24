@@ -10,13 +10,11 @@ shinyServer(function(input, output) {
   #     re-executed when inputs change
   #  2) Its output type is a plot 
   #
-  output$distPlot <- renderPlot({
-    set.seed(122)
-    histdata <- rnorm(500)
-    
-    output$plot1 <- renderPlot({
-      data <- histdata[seq_len(input$slider)]
-      hist(data)
-    })
-})
+  set.seed(122)
+  histdata <- rnorm(500)
+
+  output$plot1 <- renderPlot({
+    data <- histdata[seq_len(input$slider)]
+    hist(data)
+  })
 })  
