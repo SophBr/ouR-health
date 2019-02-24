@@ -2,49 +2,56 @@ library(shinydashboard)
 source("../../stateList.R")
 
 dashboardPage(
-  dashboardHeader(title = "ouRhealth"),
+  skin = "green",
+  dashboardHeader(title = "ouRhealth", titleWidth = 300),
   dashboardSidebar(
+    width = 300,
     sidebarMenu(
-      menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
-      menuItem("Widgets", tabName = "widgets", icon = icon("th"))
+      column(selectInput("state", "State:", append(c("All" = -1), stateList)), width = 12),
+      column(sliderInput("age", label = "Age:", value = 25, min = 18, max = 85), width = 12),
+      column(selectInput("sex", "Sex:", c("All" = -1, "male" = 1, "female" = 2)), width = 12)
     )
   ),
   dashboardBody(
-    tabItems(
-      # First tab content
-      tabItem(tabName = "dashboard",
-        fluidRow(
-          box(
-            width = 12, # full width
-            fluidRow(
-              column(selectInput("state", "State:", append(c("All" = -1), stateList)), width = 12),
-              column(sliderInput("age", label = "Age:", value = NA, min = 18, max = 120), width = 6),
-              column(selectInput("sex", "Sex:", c("male" = 1, "female" = 2)), width = 6)
-            )
-          ),
-          
-          # Personal
-          box(
-            valueBoxOutput("nValueBox.personal", width = 12),
-            plotOutput("sleepPlot.personal", height = 250),
-            plotOutput("generalHealth.personal", height = 250),
-            width = 6,
-            title= "You in the Data"),
-          
-          # Overall
-          box(
-            valueBoxOutput("nValueBox.overall", width = 12),
-            plotOutput("sleepPlot.overall", height = 250),
-            plotOutput("generalHealth.overall", height = 250),
-            width = 6,
-            title = "Overall")
-        )
-      ),
+    fluidRow(
+      valueBoxOutput("nValueBox.personal", width = 6),
+      valueBoxOutput("nValueBox.overall", width = 6),
       
-      # Second tab content
-      tabItem(tabName = "widgets",
-              h2("Widgets tab content")
-      )
+      # Sleep
+      box(
+        plotOutput("sleepPlot.personal", height = 250),
+        width = 6,
+        title= "Sleep (you)"),
+      box(
+        plotOutput("sleepPlot.overall", height = 250),
+        width = 6,
+        title = "Sleep"),
+      
+      # General Health
+      box(
+        plotOutput("generalHealth.personal", height = 250),
+        width = 6,
+        title= "General Health (you)",
+        status="success"),
+      box(
+        plotOutput("generalHealth.overall", height = 250),
+        width = 6,
+        title = "General Health",
+        status="success"),
+      
+      # Food
+      box(
+        plotOutput("fruit.personal", height = 250),
+        plotOutput("veg.personal", height = 250),
+        width = 6,
+        title= "Nutrition (you)",
+        status="success"),
+      box(
+        plotOutput("fruit.overall", height = 250),
+        plotOutput("veg.overall", height = 250),
+        width = 6,
+        title = "Fruit & Vegetables",
+        status="success")
     )
   )
 )
