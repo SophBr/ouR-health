@@ -2,6 +2,7 @@ library(shinydashboard)
 source("../../stateList.R")
 
 dashboardPage(
+  skin = "green",
   dashboardHeader(title = "ouRhealth", titleWidth = 300),
   dashboardSidebar(
     width = 300,
