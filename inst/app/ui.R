@@ -27,6 +27,7 @@ dashboardPage(
           box(
             valueBoxOutput("nValueBox.personal", width = 12),
             plotOutput("sleepPlot.personal", height = 250),
+            plotOutput("generalHealth.personal", height = 250),
             width = 6,
             title= "You in the Data"),
           
@@ -34,6 +35,7 @@ dashboardPage(
           box(
             valueBoxOutput("nValueBox.overall", width = 12),
             plotOutput("sleepPlot.overall", height = 250),
+            plotOutput("generalHealth.overall", height = 250),
             width = 6,
             title = "Overall")
         )

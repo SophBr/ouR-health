@@ -34,6 +34,7 @@ shinyServer(function(input, output) {
     )
   })
   output$sleepPlot.personal <- renderPlot({ plot.sleep(personal()) })
+  output$generalHealth.personal <- renderPlot({ plot.generalHealth(personal()) })
   
   output$nValueBox.overall <- renderValueBox({
     valueBox(
@@ -43,4 +44,5 @@ shinyServer(function(input, output) {
     )
   })
   output$sleepPlot.overall <- renderPlot({ plot.sleep(overall()) })
+  output$generalHealth.overall <- renderPlot({ plot.generalHealth(overall()) })
 })  
