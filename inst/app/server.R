@@ -29,7 +29,7 @@ shinyServer(function(input, output) {
 
   output$nValueBox.personal <- renderValueBox({
     valueBox(
-      nrow(personal()),
+      formatNumber(nrow(personal())),
       "Number of People like you",
       icon = icon("users")
     )
@@ -41,8 +41,9 @@ shinyServer(function(input, output) {
   
   output$nValueBox.overall <- renderValueBox({
     valueBox(
-      nrow(overall()),
+      formatNumber(nrow(overall())),
       "Number of People (total)",
+      color = "yellow",
       icon = icon("users")
     )
   })
