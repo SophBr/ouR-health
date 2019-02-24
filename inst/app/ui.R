@@ -37,12 +37,12 @@ dashboardPage(
       box(
         plotOutput("generalHealth.personal", height = 250),
         width = 6,
-        title= "General Health (you)",
+        title= "General Health of People like you",
         status="success"),
       box(
         plotOutput("generalHealth.overall", height = 250),
         width = 6,
-        title = "General Health",
+        title = "General Health (overall)",
         status="success"),
       
       # Stress
