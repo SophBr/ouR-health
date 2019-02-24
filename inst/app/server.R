@@ -26,6 +26,21 @@ shinyServer(function(input, output) {
   })
   overall <- reactive({ BRFSS })
 
+  output$nValueBox.personal <- renderValueBox({
+    valueBox(
+      nrow(personal()),
+      "Number of People like you",
+      icon = icon("users")
+    )
+  })
   output$sleepPlot.personal <- renderPlot({ plot.sleep(personal()) })
+  
+  output$nValueBox.overall <- renderValueBox({
+    valueBox(
+      nrow(overall()),
+      "Number of People",
+      icon = icon("users")
+    )
+  })
   output$sleepPlot.overall <- renderPlot({ plot.sleep(overall()) })
 })  

@@ -23,8 +23,19 @@ dashboardPage(
             )
           ),
           
-          box(plotOutput("sleepPlot.personal", height = 250), width = 6),
-          box(plotOutput("sleepPlot.overall", height = 250), width = 6)
+          # Personal
+          box(
+            valueBoxOutput("nValueBox.personal", width = 12),
+            plotOutput("sleepPlot.personal", height = 250),
+            width = 6,
+            title= "You in the Data"),
+          
+          # Overall
+          box(
+            valueBoxOutput("nValueBox.overall", width = 12),
+            plotOutput("sleepPlot.overall", height = 250),
+            width = 6,
+            title = "Overall")
         )
       ),
       
